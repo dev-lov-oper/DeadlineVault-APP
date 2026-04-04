@@ -70,13 +70,4 @@ It uses a **priority-based system** to automatically rank tasks based on urgency
 
 ---
 
-## 🗄️ Database Schema  
 
-```sql
-CREATE TABLE tasks (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    description TEXT,
-    deadline DATE,
-    priority INTEGER
-);
