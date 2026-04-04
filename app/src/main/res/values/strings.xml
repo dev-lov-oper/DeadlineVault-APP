@@ -1,3 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Project_final</string>
+
+    <string-array name="subjects">
+        <item>Select Subject</item>
+        <item>Mathematics</item>
+        <item>Physics</item>
+        <item>Computer Science</item>
+        <item>Chemistry</item>
+    </string-array>
+
+    <string-array name="priorities">
+        <item>auto</item>
+        <item>high</item>
+        <item>medium</item>
+        <item>low</item>
+    </string-array>
 </resources>

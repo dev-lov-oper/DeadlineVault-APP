@@ -1,9 +1,12 @@
 package com.example.project_final;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Button;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -24,25 +27,20 @@ public class DeadlineAdapter extends RecyclerView.Adapter<DeadlineAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_deadline, parent, false);
-
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         Deadline d = list.get(position);
 
         holder.title.setText(d.getTitle());
         holder.subject.setText(d.getSubject());
 
-       
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-
             Date today = new Date();
             Date dueDate = sdf.parse(d.getDueDate());
 
@@ -53,7 +51,6 @@ public class DeadlineAdapter extends RecyclerView.Adapter<DeadlineAdapter.ViewHo
 
             View colorStrip = holder.itemView.findViewById(R.id.colorStrip);
 
-            // Urgency logic
             if (days <= 2) {
                 colorStrip.setBackgroundColor(0xFFFF0000); // RED
             } else if (days <= 7) {
@@ -63,19 +60,32 @@ public class DeadlineAdapter extends RecyclerView.Adapter<DeadlineAdapter.ViewHo
             }
 
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.e("DeadlineAdapter", "Error parsing date: " + d.getDueDate(), e);
             holder.days.setText("Invalid date");
         }
-    }
-    @Override
-    public int getItemCount() {
-        return list.size();
+
+        // 🔥 DELETE BUTTON LOGIC
+        holder.deleteBtn.setOnClickListener(v -> {
+
+            DBHelper db = new DBHelper(v.getContext());
+
+            db.deleteDeadline(d.getTitle());
+
+            int pos = holder.getAdapterPosition();
+            list.remove(pos);
+            notifyItemRemoved(pos);
+        });
     }
 
-    // ViewHolder Class
+    @Override
+    public int getItemCount() {
+        return list == null ? 0 : list.size();
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView title, subject, days;
+        Button deleteBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -83,6 +93,7 @@ public class DeadlineAdapter extends RecyclerView.Adapter<DeadlineAdapter.ViewHo
             title = itemView.findViewById(R.id.tvTaskTitle);
             subject = itemView.findViewById(R.id.tvSubject);
             days = itemView.findViewById(R.id.tvDays);
+            deleteBtn = itemView.findViewById(R.id.btnDelete);
         }
     }
 }

@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <!-- Color Strip -->
         <View
             android:id="@+id/colorStrip"
             android:layout_width="4dp"
@@ -21,6 +22,7 @@
             android:layout_centerVertical="true"
             android:background="#00FF00" />
 
+        <!-- Title -->
         <TextView
             android:id="@+id/tvTaskTitle"
             android:layout_width="wrap_content"
@@ -29,9 +31,9 @@
             android:layout_toEndOf="@id/colorStrip"
             android:text="Task Title"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="?attr/colorOnSurface" />
+            android:textStyle="bold" />
 
+        <!-- Subject -->
         <TextView
             android:id="@+id/tvSubject"
             android:layout_width="wrap_content"
@@ -41,22 +43,31 @@
             android:layout_marginTop="4dp"
             android:layout_toEndOf="@id/colorStrip"
             android:text="Subject"
-            android:textSize="14sp"
-            android:textColor="?attr/colorOnSurfaceVariant" />
+            android:textSize="14sp" />
 
+        <!-- Days -->
         <TextView
             android:id="@+id/tvDays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:background="?attr/colorSecondaryContainer"
-            android:paddingHorizontal="8dp"
-            android:paddingVertical="4dp"
+            android:background="#EEEEEE"
+            android:padding="6dp"
             android:text="3 days left"
-            android:textColor="?attr/colorOnSecondaryContainer"
             android:textSize="12sp"
             android:textStyle="bold" />
+
+        <!-- Delete Button -->
+        <Button
+            android:id="@+id/btnDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:textSize="12sp"
+            android:layout_below="@id/tvSubject"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"/>
 
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
