@@ -9,19 +9,20 @@
     tools:context=".MainActivity">
 
     <!-- Title -->
+
+    <!-- Archive Button -->
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:text="DeadlineVault"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Archive Button -->
     <Button
         android:id="@+id/btnArchive"
         android:layout_width="wrap_content"

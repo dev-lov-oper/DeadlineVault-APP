@@ -15,6 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public DBHelper(Context context) {
         super(context, "DeadlineDB", null, 1);
     }
+    // DeadLineDB.db will be created here
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -33,7 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public void insertDeadline(Deadline deadline) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();  // write mode
         ContentValues values = new ContentValues();
         values.put("title", deadline.getTitle());
         values.put("subject", deadline.getSubject());

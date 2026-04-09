@@ -22,10 +22,12 @@
             </intent-filter>
         </activity>
 
-        <!-- Add Deadline Screen -->
+<!--         Add Deadline Screen -->
         <activity
             android:name=".AddDeadlineActivity"
             android:exported="false" />
+
+<!--        cannot be opened by other apps ,security practice-->
 
     </application>
 

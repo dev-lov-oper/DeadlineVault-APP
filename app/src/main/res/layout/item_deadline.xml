@@ -61,13 +61,14 @@
         <!-- Delete Button -->
         <Button
             android:id="@+id/btnDelete"
-            android:layout_width="wrap_content"
+            android:layout_width="102dp"
             android:layout_height="wrap_content"
-            android:text="Delete"
-            android:textSize="12sp"
             android:layout_below="@id/tvSubject"
             android:layout_alignParentEnd="true"
-            android:layout_marginTop="8dp"/>
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="6dp"
+            android:text="Delete"
+            android:textSize="12sp" />
 
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>

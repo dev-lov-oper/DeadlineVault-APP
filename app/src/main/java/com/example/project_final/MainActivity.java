@@ -28,11 +28,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView = findViewById(R.id.recyclerView);
         db = new DBHelper(this);
 
-        // TEMP test insert
-        Deadline test = new Deadline("Test Task", "CS", "2026-04-06", "auto");
-        db.insertDeadline(test);
 
-        Toast.makeText(this, "DB INSERT CALLED", Toast.LENGTH_LONG).show();
 
 
         list = new ArrayList<>();
@@ -58,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         DBHelper db = new DBHelper(this);
 
         list = db.getAllDeadlines();
-
+        // refresh adapter
         adapter = new DeadlineAdapter(list);
         recyclerView.setAdapter(adapter);
     }
